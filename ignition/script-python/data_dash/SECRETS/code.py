@@ -1,0 +1,3 @@
+CLIENT_ID = ''
+CLIENT_SECRET = ''
+DEVICE_ID = ''
