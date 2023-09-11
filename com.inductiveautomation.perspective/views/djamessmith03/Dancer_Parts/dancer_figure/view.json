@@ -1,0 +1,161 @@
+{
+  "custom": {},
+  "params": {},
+  "props": {
+    "defaultSize": {
+      "height": 300,
+      "width": 300
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "body"
+        },
+        "position": {
+          "height": 100,
+          "width": 8,
+          "x": 141,
+          "y": 120
+        },
+        "props": {
+          "style": {
+            "classes": "djamessmith03/dancer_part"
+          }
+        },
+        "type": "ia.container.coord"
+      },
+      {
+        "meta": {
+          "name": "left_leg"
+        },
+        "position": {
+          "height": 90,
+          "rotate": {
+            "anchor": "100% 0%",
+            "angle": "45deg"
+          },
+          "width": 8,
+          "x": 143,
+          "y": 216
+        },
+        "props": {
+          "style": {
+            "classes": "djamessmith03/dancer_part"
+          }
+        },
+        "type": "ia.container.coord"
+      },
+      {
+        "meta": {
+          "name": "right_leg"
+        },
+        "position": {
+          "height": 90,
+          "rotate": {
+            "anchor": "100% 0%",
+            "angle": "-45deg"
+          },
+          "width": 8,
+          "x": 137,
+          "y": 210
+        },
+        "props": {
+          "style": {
+            "classes": "djamessmith03/dancer_part"
+          }
+        },
+        "type": "ia.container.coord"
+      },
+      {
+        "meta": {
+          "name": "upper_left_arm"
+        },
+        "position": {
+          "height": 75,
+          "rotate": {
+            "anchor": "100% 0%",
+            "angle": "135deg"
+          },
+          "width": 8,
+          "x": 136,
+          "y": 130
+        },
+        "props": {
+          "style": {
+            "classes": "djamessmith03/dancer_part"
+          }
+        },
+        "type": "ia.container.coord"
+      },
+      {
+        "meta": {
+          "name": "upper_right_arm"
+        },
+        "position": {
+          "height": 75,
+          "rotate": {
+            "anchor": "100% 0%",
+            "angle": "225deg"
+          },
+          "width": 8,
+          "x": 130,
+          "y": 125
+        },
+        "props": {
+          "style": {
+            "classes": "djamessmith03/dancer_part"
+          }
+        },
+        "type": "ia.container.coord"
+      },
+      {
+        "meta": {
+          "name": "lower_left_arm"
+        },
+        "position": {
+          "height": 75,
+          "rotate": {
+            "anchor": "100% 0%",
+            "angle": "135deg"
+          },
+          "width": 8,
+          "x": 88,
+          "y": 82
+        },
+        "props": {
+          "style": {
+            "classes": "djamessmith03/dancer_part"
+          }
+        },
+        "type": "ia.container.coord"
+      },
+      {
+        "meta": {
+          "name": "lower_right_arm"
+        },
+        "position": {
+          "height": 75,
+          "rotate": {
+            "anchor": "100% 0%",
+            "angle": "225deg"
+          },
+          "width": 8,
+          "x": 188.68986892700195,
+          "y": 65.65328651708984
+        },
+        "props": {
+          "style": {
+            "classes": "djamessmith03/dancer_part"
+          }
+        },
+        "type": "ia.container.coord"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "type": "ia.container.coord"
+  }
+}

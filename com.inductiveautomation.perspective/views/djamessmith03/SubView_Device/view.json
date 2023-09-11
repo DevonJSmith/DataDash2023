@@ -1,0 +1,253 @@
+{
+  "custom": {
+    "currentHumidity": 66,
+    "deviceName": "Dehumidifier - TP Series",
+    "deviceOn": true,
+    "fanSpeed": 2,
+    "faultCode": "0",
+    "targetHumidity": 15
+  },
+  "params": {
+    "tagPath": "[default]djamessmith03/Basement Dehumidifer"
+  },
+  "propConfig": {
+    "custom.currentHumidity": {
+      "binding": {
+        "config": {
+          "fallbackDelay": 2.5,
+          "mode": "indirect",
+          "references": {
+            "0": "{view.params.tagPath}"
+          },
+          "tagPath": "{0}/Analytics/Current Humidity"
+        },
+        "type": "tag"
+      },
+      "persistent": true
+    },
+    "custom.deviceName": {
+      "binding": {
+        "config": {
+          "fallbackDelay": 2.5,
+          "mode": "indirect",
+          "references": {
+            "0": "{view.params.tagPath}"
+          },
+          "tagPath": "{0}/Device Name"
+        },
+        "type": "tag"
+      },
+      "persistent": true
+    },
+    "custom.deviceOn": {
+      "binding": {
+        "config": {
+          "fallbackDelay": 2.5,
+          "mode": "indirect",
+          "references": {
+            "0": "{view.params.tagPath}"
+          },
+          "tagPath": "{0}/Analytics/Switch On"
+        },
+        "type": "tag"
+      },
+      "persistent": true
+    },
+    "custom.fanSpeed": {
+      "binding": {
+        "config": {
+          "fallbackDelay": 2.5,
+          "mode": "indirect",
+          "references": {
+            "0": "{view.params.tagPath}"
+          },
+          "tagPath": "{0}/Analytics/Fan Setting"
+        },
+        "type": "tag"
+      },
+      "persistent": true
+    },
+    "custom.faultCode": {
+      "binding": {
+        "config": {
+          "fallbackDelay": 2.5,
+          "mode": "indirect",
+          "references": {
+            "0": "{view.params.tagPath}"
+          },
+          "tagPath": "{0}/Analytics/Fault Code"
+        },
+        "type": "tag"
+      },
+      "persistent": true
+    },
+    "custom.targetHumidity": {
+      "binding": {
+        "config": {
+          "fallbackDelay": 2.5,
+          "mode": "indirect",
+          "references": {
+            "0": "{view.params.tagPath}"
+          },
+          "tagPath": "{0}/Analytics/Humidity Setting"
+        },
+        "type": "tag"
+      },
+      "persistent": true
+    },
+    "params.tagPath": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 492,
+      "width": 485
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "title"
+        },
+        "props": {
+          "text": "Basement Humidity",
+          "textStyle": {
+            "fontFamily": "Noto Sans",
+            "fontSize": "20pt",
+            "fontWeight": "bold",
+            "textAlign": "center"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Vessel"
+            },
+            "position": {
+              "grow": 1
+            },
+            "propConfig": {
+              "props.animationSpeed": {
+                "binding": {
+                  "config": {
+                    "path": "view.custom.fanSpeed"
+                  },
+                  "transforms": [
+                    {
+                      "code": "\treturn 200 * value",
+                      "type": "script"
+                    }
+                  ],
+                  "type": "property"
+                }
+              },
+              "props.label.text": {
+                "binding": {
+                  "config": {
+                    "path": "view.custom.deviceName"
+                  },
+                  "type": "property"
+                }
+              },
+              "props.state": {
+                "binding": {
+                  "config": {
+                    "struct": {
+                      "faultCode": "{view.custom.faultCode}",
+                      "switchOn": "{view.custom.deviceOn}"
+                    },
+                    "waitOnAll": true
+                  },
+                  "transforms": [
+                    {
+                      "code": "\tif value.faultCode !\u003d \u00270\u0027:\n\t\tresult \u003d \u0027faulted\u0027\n\telif not value.switchOn:\n\t\tresult \u003d \u0027stopped\u0027\n\telse:\n\t\tresult \u003d \u0027running\u0027\n\treturn result",
+                      "type": "script"
+                    }
+                  ],
+                  "type": "expr-struct"
+                }
+              },
+              "props.value.value": {
+                "binding": {
+                  "config": {
+                    "path": "view.custom.currentHumidity"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "label": {},
+              "value": {
+                "location": "hidden"
+              }
+            },
+            "type": "ia.symbol.vessel"
+          },
+          {
+            "meta": {
+              "name": "MovingAnalogIndicator"
+            },
+            "position": {
+              "basis": "100px"
+            },
+            "propConfig": {
+              "props.processValue": {
+                "binding": {
+                  "config": {
+                    "path": "view.custom.currentHumidity"
+                  },
+                  "type": "property"
+                }
+              },
+              "props.setpointValue": {
+                "binding": {
+                  "config": {
+                    "path": "view.custom.targetHumidity"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "desiredHigh": 50,
+              "desiredLow": 30,
+              "highAlarm": 90,
+              "highHighAlarm": null,
+              "highInterlock": null,
+              "label": {
+                "format": "#,##0%",
+                "visible": true
+              },
+              "lowAlarm": 10,
+              "lowInterlock": null,
+              "lowLowAlarm": null,
+              "reverseIndicator": true
+            },
+            "type": "ia.display.moving-analog-indicator"
+          }
+        ],
+        "meta": {
+          "name": "displayContainer"
+        },
+        "position": {
+          "grow": 1
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column"
+    },
+    "type": "ia.container.flex"
+  }
+}

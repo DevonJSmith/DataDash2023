@@ -1,0 +1,91 @@
+{
+  "custom": {},
+  "params": {
+    "animationDelayMS": 300,
+    "jointAngle": 30
+  },
+  "propConfig": {
+    "params.animationDelayMS": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.jointAngle": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 160,
+      "width": 160
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "upper_segment"
+        },
+        "position": {
+          "height": 75,
+          "rotate": {
+            "anchor": "100% 0%"
+          },
+          "width": 8,
+          "x": 75
+        },
+        "props": {
+          "style": {
+            "classes": "djamessmith03/dancer_part"
+          }
+        },
+        "type": "ia.container.coord"
+      },
+      {
+        "meta": {
+          "name": "lower_segment"
+        },
+        "position": {
+          "height": 75,
+          "rotate": {
+            "anchor": {
+              "x": 75,
+              "y": 4
+            }
+          },
+          "width": 8,
+          "x": 75,
+          "y": 72
+        },
+        "propConfig": {
+          "position.rotate.angle": {
+            "binding": {
+              "config": {
+                "expression": "{view.params.jointAngle}+ \u0027deg\u0027"
+              },
+              "type": "expr"
+            }
+          },
+          "props.style.transition": {
+            "binding": {
+              "config": {
+                "expression": "\u0027transform \u0027+{view.params.animationDelayMS}+\u0027ms ease-in-out\u0027"
+              },
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "classes": "djamessmith03/dancer_part"
+          }
+        },
+        "type": "ia.container.coord"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "type": "ia.container.coord"
+  }
+}

@@ -4,13 +4,14 @@
   "restricted": false,
   "overridable": true,
   "files": [
-    "props.json"
+    "view.json",
+    "thumbnail.png"
   ],
   "attributes": {
     "lastModification": {
       "actor": "djamessmith03",
-      "timestamp": "2023-09-10T22:09:34Z"
+      "timestamp": "2023-09-11T02:50:17Z"
     },
-    "lastModificationSignature": "979a1392fe9d9f8e2aadc1457a6e6a4a09022f28987a9785d0723ba985659c77"
+    "lastModificationSignature": "0623da7ae3b42d8f8c4f331b4f4a2078fbd25bd5db1737ee01e1b5edfd31da8a"
   }
 }
